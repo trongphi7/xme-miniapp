@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xme - Áo thun Polo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #222; color: #fff; padding: 1rem; text-align: center; }
+    .product-list { display: flex; flex-wrap: wrap; padding: 1rem; gap: 1rem; }
+    .product { border: 1px solid #ccc; border-radius: 8px; width: 45%; padding: 1rem; }
+    .product img { width: 100%; border-radius: 6px; }
+    .product h3 { margin: 0.5rem 0; }
+    .buy-btn { background: #007bff; color: #fff; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer; }
+    .form-section { padding: 1rem; }
+    label { display: block; margin: 0.5rem 0 0.2rem; }
+    input, select { width: 100%; padding: 0.5rem; margin-bottom: 1rem; }
+    .submit-btn { background: #28a745; color: #fff; border: none; padding: 0.75rem; width: 100%; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Áo Thun Polo Xme</h1>
+  <p>Chính hãng - Đa dạng - Giá tốt</p>
+</header>
+
+<section class="product-list">
+  <div class="product">
+    <img src="https://via.placeholder.com/300x200" alt="Polo 01">
+    <h3>Polo Basic Trắng</h3>
+    <p>Giá: 299.000đ</p>
+    <button class="buy-btn" onclick="selectProduct('Polo Basic Trắng')">Chọn mua</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/300x200" alt="Polo 02">
+    <h3>Polo Xme Đen</h3>
+    <p>Giá: 329.000đ</p>
+    <button class="buy-btn" onclick="selectProduct('Polo Xme Đen')">Chọn mua</button>
+  </div>
+</section>
+
+<section class="form-section">
+  <h2>Đặt hàng</h2>
+  <form onsubmit="submitOrder(event)">
+    <label for="product">Sản phẩm</label>
+    <input type="text" id="product" name="product" readonly required>
+
+    <label for="name">Họ tên</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="phone">Số điện thoại</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="address">Địa chỉ giao hàng</label>
+    <input type="text" id="address" name="address" required>
+
+    <button type="submit" class="submit-btn">Gửi đơn hàng</button>
+  </form>
+</section>
+
+<script>
+  function selectProduct(name) {
+    document.getElementById('product').value = name;
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
+
+  function submitOrder(e) {
+    e.preventDefault();
+    const data = {
+      product: document.getElementById('product').value,
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      address: document.getElementById('address').value
+    };
+    console.log('Đơn hàng đã gửi:', data);
+    alert('Đặt hàng thành công! Chúng tôi sẽ liên hệ bạn sớm.');
+    e.target.reset();
+  }
+</script>
+
+</body>
+</html>
